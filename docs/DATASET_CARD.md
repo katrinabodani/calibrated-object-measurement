@@ -20,7 +20,7 @@
 - **Camera:** iPhone main camera — **12 MP native, landscape (4032 × 3024)**,
   identical configuration to the Step 1 calibration (required for the calibration
   to apply). Transferred via USB.
-- **Number of images:** target ~80 captured → **≥ 70 labelled** _(final count TBD)._
+- **Number of images:** 82 captured → 1 portrait outlier removed → **81 labelled**.
 - **Variation:** viewpoint (front/top/3-4/tilted), box orientation (standing/flat/
   on-side), distance (close/far), background (multiple surfaces), and lighting.
 - **All images undistorted:** **Yes** — undistorted with the Step 1 intrinsics
@@ -28,19 +28,24 @@
   (which undistorts every input).
 
 ## Labelling
-- **Tool:** _TBD (Roboflow or CVAT — annotation tool only; note the model-architecture
-  restriction bans Roboflow/YOLO models, not the labelling tool)._
-- **Annotation type:** instance segmentation (polygon masks).
-- **Classes:** 1 — `box`.
+- **Tool:** **Roboflow** — SAM-assisted "Smart Polygon" annotation. Used as an
+  **annotation tool only**; the model architecture (Step 2) is non-Roboflow /
+  non-YOLO per the rules.
+- **Annotation type:** instance segmentation. Exported as **COCO Segmentation**
+  with **RLE masks** (SAM output).
+- **Classes:** 1 — `medicine_box` (COCO also carries an index-0 dummy supercategory,
+  standard Roboflow behaviour).
 
 ## Statistics
 | Split | Images | % |
 |-------|--------|---|
-| Train | _TBD_ | 70% |
-| Val   | _TBD_ | 20% |
-| Test  | _TBD_ | 10% |
+| Train | 57 | 70% |
+| Val   | 16 | 20% |
+| Test  | 8  | 10% |
+| **Total** | **81** | 100% |
 
-- **Class distribution:** single class (`box`), one instance per image _(TBD)._
+- **Class distribution:** single class (`medicine_box`), exactly one instance per
+  image (81 masks total). Split performed in Roboflow (random).
 
 ## Access
 _Full dataset (raw images, labels, splits) hosted on Google Drive — see
