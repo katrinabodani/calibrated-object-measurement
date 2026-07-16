@@ -46,10 +46,13 @@ on Google Drive with "Anyone with the link can view" access:
 
 | Contents | Link |
 |----------|------|
-| Calibration Images | _`<PASTE DRIVE URL>`_ |
-| Full Dataset (raw images) | _`<PASTE DRIVE URL>`_ |
-| Labelled Dataset Export | _`<PASTE DRIVE URL>`_ |
-| Trained Model Weights | _`<PASTE DRIVE URL>`_ |
+| Calibration Images (26) | https://drive.google.com/drive/folders/1LQ4apP_msEcUxKVfd0TrxYbZwzsqiJ8q?usp=drive_link |
+| Dataset — Raw Images (81) | https://drive.google.com/drive/folders/1xIZfy29QP5V6S062ttYWHtwFYX65tbnY?usp=sharing |
+| Dataset — Undistorted Images (81) | https://drive.google.com/drive/folders/1A5up4ismFSmDij8h1h8rnFilsmp6yAFC?usp=sharing |
+| Labelled Dataset (COCO, 70/20/10 splits) | https://drive.google.com/drive/folders/1Df8IbTGVSz5snYy91Ljvjl3dpJk55sYc?usp=sharing |
+| Label Previews (train split) | https://drive.google.com/drive/folders/1uVhL6bZ58uZ3dP9xCHeG8szitGGb_I8r?usp=sharing |
+| Trained Model Weights (Mask R-CNN, 169 MB) | https://drive.google.com/drive/folders/1Uq1IY6aswwlCG9xTPO8lu_6POrOXuaqT?usp=sharing |
+| Test-Set Prediction Visualizations (8) | https://drive.google.com/drive/folders/18H43ikEMC6RMTZOZvXmquXXeLfF6vV0n?usp=sharing |
 
 ## Quick start
 
@@ -65,4 +68,10 @@ pip install -r requirements.txt
 
 ## Status
 
-🚧 In progress — repository scaffolding set up. See commit history for incremental progress.
+- ✅ **Step 1 — Calibration & dataset:** camera calibrated (intrinsics + undistortion),
+  81-image dataset collected, undistorted, labelled (COCO), split 70/20/10.
+- ✅ **Step 2 — Model training:** Mask R-CNN trained (test mAP@0.5 = 1.0, IoU = 0.972);
+  inference pipeline (`inference/infer.py`) undistorts → segments → annotates.
+- 🚧 **Step 3 — Pixel-to-mm measurement:** in progress.
+
+See commit history for incremental progress.

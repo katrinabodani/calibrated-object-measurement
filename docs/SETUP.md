@@ -1,32 +1,82 @@
 # Setup & Installation Guide
 
-## Environment
-- **OS:** _TBD_
-- **Python:** 3.10+
-- **GPU:** _TBD (required for training)_
+## 1. Environment
+- **OS:** Windows 11 (Linux/macOS also work)
+- **Python:** 3.12
+- **GPU (recommended for training):** NVIDIA GPU with CUDA. Developed on an
+  RTX 4050 Laptop (6 GB), CUDA 12.4. CPU works for inference but training is slow.
 
-## Installation
+## 2. Installation
 ```bash
 git clone <repo-url>
 cd <repo>
+
 python -m venv .venv
-# Windows:  .venv\Scripts\activate
-# Linux/Mac: source .venv/bin/activate
+# Windows:      .venv\Scripts\activate
+# Linux/macOS:  source .venv/bin/activate
+
+python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-## Getting the large files (Google Drive)
-The calibration images, dataset, and model weights are hosted on Google Drive
-(see links in the root `README.md`). Download and place them as:
-- Calibration images → `calibration/images/`
-- Dataset → `dataset/raw/`, `dataset/labels/`, `dataset/splits/`
-- Model weights → `models/weights/`
+**PyTorch with CUDA** — install the build matching your GPU (the generic
+`torch` on PyPI may be CPU-only). For CUDA 12.4:
+```bash
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
+```
+Verify: `python -c "import torch; print(torch.cuda.is_available())"` → `True`.
 
-## Running the pipeline
-1. **Calibration** — _TBD_
-2. **Training** — _TBD_
-3. **Inference** — _TBD_
-4. **Measurement** — _TBD_
+## 3. Getting the large files (Google Drive)
+Calibration images, the dataset, and the trained weights are hosted on Google
+Drive (links in the root `README.md` and each folder's `README.md`). Download and
+place them:
 
-## Docker (optional)
-_TBD_
+| File | Destination |
+|------|-------------|
+| Calibration images | `calibration/images/` |
+| Dataset — raw | `dataset/raw/` |
+| Labelled dataset (COCO splits) | `dataset/splits/` (`train/`, `val/`, `test/`) |
+| Trained weights (`maskrcnn_medicinebox_best.pth`) | `models/weights/` |
+
+## 4. Running the pipeline
+
+### 4.1 Camera calibration (Step 1)
+```bash
+# validate checkerboard detection
+python calibration/scripts/check_checkerboard.py --input calibration/images
+# run intrinsic calibration -> calibration/camera_intrinsics.{npz,yaml}
+python calibration/scripts/calibrate.py --input calibration/images \
+    --out calibration --cols 8 --rows 11 --square-mm 20.0
+# verify undistortion quality
+python calibration/scripts/undistort_quality.py --input calibration/images --out calibration
+```
+
+### 4.2 Dataset preparation (Step 1)
+```bash
+# iPhone HEIC -> JPG (if starting from raw HEIC captures)
+python calibration/scripts/convert_heic.py --input dataset/raw --delete
+# undistort dataset images with Step 1 intrinsics
+python dataset/scripts/undistort_images.py --input dataset/raw --output dataset/undistorted
+```
+Labelling was done in Roboflow (SAM-assisted), exported as COCO into
+`dataset/splits/{train,val,test}`.
+
+### 4.3 Model training (Step 2)
+```bash
+python models/train.py --config models/configs/maskrcnn.yaml
+```
+Produces `models/weights/…best.pth`, `models/loss_curves.png`,
+`models/metrics.json`, and `models/test_predictions/`.
+
+### 4.4 Inference (Step 2)
+```bash
+python inference/infer.py --image path/to/image.jpg
+```
+Undistorts → segments → writes an annotated image to `inference/outputs/`.
+See `inference/README.md`.
+
+### 4.5 Measurement (Step 3)
+_Documented in `measurement/README.md` and `docs/MEASUREMENT_REPORT.md` (in progress)._
+
+## 5. Docker (optional)
+Not used for this project; the venv setup above is the supported path.
