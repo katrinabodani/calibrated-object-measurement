@@ -34,6 +34,7 @@ project-root/
 | Doc | Contents |
 |-----|----------|
 | [docs/SETUP.md](docs/SETUP.md) | Installation, environment, run instructions |
+| [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | Data-flow diagram, design decisions, module/API docs |
 | [docs/CALIBRATION_REPORT.md](docs/CALIBRATION_REPORT.md) | Method, parameters, reprojection error |
 | [docs/DATASET_CARD.md](docs/DATASET_CARD.md) | Object, collection method, labelling tool, statistics |
 | [docs/TRAINING_REPORT.md](docs/TRAINING_REPORT.md) | Architecture, hyperparameters, metrics, loss curves |
