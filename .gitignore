@@ -10,8 +10,9 @@ calibration/_corners_cache*.npz
 # Keep the small undistortion sample (documentation asset for the report)
 !calibration/undistort_sample.jpg
 
-# Dataset: raw images, labels, splits (host on Google Drive) 
+# Dataset: raw images, labels, splits (host on Google Drive)
 dataset/raw/
+dataset/undistorted/
 dataset/splits/
 dataset/**/*.jpg
 dataset/**/*.jpeg

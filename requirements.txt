@@ -6,6 +6,7 @@ scipy>=1.10.0
 # Imaging / plotting
 matplotlib>=3.7.0
 Pillow>=10.0.0
+pillow-heif>=0.15.0   # iPhone HEIC -> JPG conversion (convert_heic.py)
 
 # Model training (architecture TBD in Step 2 — NOT YOLO / NOT Roboflow)
 # Uncomment the stack chosen during Step 2:
