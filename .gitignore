@@ -1,0 +1,51 @@
+# Calibration images (host on Google Drive)
+calibration/images/
+calibration/**/*.jpg
+calibration/**/*.jpeg
+calibration/**/*.png
+
+# Dataset: raw images, labels, splits (host on Google Drive) 
+dataset/raw/
+dataset/splits/
+dataset/**/*.jpg
+dataset/**/*.jpeg
+dataset/**/*.png
+
+# host full exports on Drive.
+dataset/**/*.zip
+
+# Trained model weights (host on Google Drive)
+models/weights/
+*.pt
+*.pth
+*.onnx
+*.h5
+*.ckpt
+*.pkl
+
+# Inference / measurement outputs (keep a few small samples only)
+inference/outputs/
+measurement/outputs/
+
+# Standard Python
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
+.venv/
+venv/
+env/
+.env
+*.egg-info/
+.pytest_cache/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+*.pdf
+
+!**/README.md
+!**/.gitkeep

@@ -1,0 +1,20 @@
+# Core computer vision & numerics
+opencv-python>=4.8.0
+numpy>=1.24.0
+scipy>=1.10.0
+
+# Imaging / plotting
+matplotlib>=3.7.0
+Pillow>=10.0.0
+
+# Model training (architecture TBD in Step 2 — NOT YOLO / NOT Roboflow)
+# Uncomment the stack chosen during Step 2:
+# torch>=2.1.0
+# torchvision>=0.16.0
+# segmentation-models-pytorch>=0.3.3   # (U-Net / DeepLab family)
+# transformers>=4.40.0                  # (SegFormer via HuggingFace)
+
+# Utilities
+tqdm>=4.65.0
+pyyaml>=6.0
+pandas>=2.0.0
