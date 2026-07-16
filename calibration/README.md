@@ -12,5 +12,3 @@ Scripts and (Drive-hosted) images for intrinsic camera calibration.
 
 **Calibration Images (26 checkerboard captures, 12 MP, 4032×3024):**
 https://drive.google.com/drive/folders/1LQ4apP_msEcUxKVfd0TrxYbZwzsqiJ8q?usp=drive_link
-
-_Link access must be set to "Anyone with the link can view."_
