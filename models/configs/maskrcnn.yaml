@@ -1,0 +1,40 @@
+# Mask R-CNN training configuration (torchvision, ResNet50-FPN)
+# Object: medicine_box (single foreground class). Instance segmentation.
+
+model:
+  arch: maskrcnn_resnet50_fpn
+  pretrained: true          # COCO-pretrained (transfer learning — essential for 81 imgs)
+  num_classes: 2            # background + medicine_box
+  min_size: 640             # resize short side (tuned for 6 GB VRAM)
+  max_size: 1024            # resize long side
+
+data:
+  splits_dir: dataset/splits
+  train: train
+  val: val
+  test: test
+
+train:
+  epochs: 25               # converges by ~epoch 3 (COCO-pretrained); enough for a clean curve + LR step
+  batch_size: 2
+  workers: 2
+  optimizer: sgd            # sgd | adamw
+  lr: 0.005
+  momentum: 0.9
+  weight_decay: 0.0005
+  lr_step_size: 15          # StepLR
+  lr_gamma: 0.1
+  amp: true                 # mixed precision (saves VRAM on the 4050)
+  seed: 42
+
+augment:
+  hflip: 0.5                # random horizontal flip probability
+  photometric: 0.3          # brightness/contrast jitter strength (0 = off)
+
+eval:
+  score_thresh_prf: 0.5     # confidence threshold for precision/recall/F1 counting
+  iou_thresh_prf: 0.5       # IoU threshold for a true positive
+
+output:
+  dir: models
+  weights_name: maskrcnn_medicinebox_best.pth

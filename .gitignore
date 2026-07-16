@@ -24,6 +24,9 @@ dataset/**/*.zip
 
 # Trained model weights (host on Google Drive)
 models/weights/
+
+# Test-set prediction visualizations (host on Google Drive)
+models/test_predictions/
 *.pt
 *.pth
 *.onnx

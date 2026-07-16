@@ -8,12 +8,12 @@ matplotlib>=3.7.0
 Pillow>=10.0.0
 pillow-heif>=0.15.0   # iPhone HEIC -> JPG conversion (convert_heic.py)
 
-# Model training (architecture TBD in Step 2 — NOT YOLO / NOT Roboflow)
-# Uncomment the stack chosen during Step 2:
-# torch>=2.1.0
-# torchvision>=0.16.0
-# segmentation-models-pytorch>=0.3.3   # (U-Net / DeepLab family)
-# transformers>=4.40.0                  # (SegFormer via HuggingFace)
+# Model training — Mask R-CNN (torchvision, ResNet50-FPN, COCO-pretrained).
+# Install torch/torchvision with the CUDA build matching your GPU, e.g.:
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
+torch>=2.6.0
+torchvision>=0.21.0
+pycocotools>=2.0.7          # COCO mAP evaluation + RLE mask decode
 
 # Utilities
 tqdm>=4.65.0
