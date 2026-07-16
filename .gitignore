@@ -38,6 +38,9 @@ models/test_predictions/
 inference/outputs/
 measurement/outputs/
 
+# Measurement input photos (box + card) — host on Google Drive
+measurement/images/
+
 # Standard Python
 __pycache__/
 *.py[cod]

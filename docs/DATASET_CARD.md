@@ -3,8 +3,9 @@
 ## Object Chosen
 - **Object:** Pharmaceutical carton — a small "Crystolife" medicine box (rigid
   rectangular cardboard box with printed graphics).
-- **Approximate real-world dimensions:** _width × height × depth in mm — TBD
-  (to be measured with a ruler/calliper; used as ground truth in Step 3)._
+- **Real-world dimensions (front face, ruler-measured):** **113 × 50 mm**
+  (width × height). This face is the Step 3 measurement target / ground truth.
+  (Depth ≈ 20 mm, not measured for the 2D width×height task.)
 - **Justification:**
   - **Geometry** — rigid rectangular box with flat faces and sharp, well-defined
     edges → segments cleanly and gives unambiguous width/height to measure.

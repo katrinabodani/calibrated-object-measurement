@@ -39,7 +39,7 @@ project-root/
 | [docs/TRAINING_REPORT.md](docs/TRAINING_REPORT.md) | Architecture, hyperparameters, metrics, loss curves |
 | [docs/MEASUREMENT_REPORT.md](docs/MEASUREMENT_REPORT.md) | Methodology, accuracy table, error analysis |
 
-## ⚠️ Large files — Google Drive (Section 2.2)
+## Large files — Google Drive (Section 2.2)
 
 Per the assessment rules, large files are **not** committed to GitHub. They are hosted
 on Google Drive with "Anyone with the link can view" access:
@@ -53,6 +53,8 @@ on Google Drive with "Anyone with the link can view" access:
 | Label Previews (train split) | https://drive.google.com/drive/folders/1uVhL6bZ58uZ3dP9xCHeG8szitGGb_I8r?usp=sharing |
 | Trained Model Weights (Mask R-CNN, 169 MB) | https://drive.google.com/drive/folders/1Uq1IY6aswwlCG9xTPO8lu_6POrOXuaqT?usp=sharing |
 | Test-Set Prediction Visualizations (8) | https://drive.google.com/drive/folders/18H43ikEMC6RMTZOZvXmquXXeLfF6vV0n?usp=sharing |
+| Measurement Photos (box + card, 12) | https://drive.google.com/drive/folders/1riLU7_6wdC35noKtAQEi17CJ54YjlVxt?usp=sharing |
+| Annotated Measurement Outputs | https://drive.google.com/drive/folders/1dDJJLvi_sjznP6Lqsm1T_Qea5iBP0txQ?usp=sharing |
 
 ## Quick start
 
@@ -68,10 +70,11 @@ pip install -r requirements.txt
 
 ## Status
 
-- ✅ **Step 1 — Calibration & dataset:** camera calibrated (intrinsics + undistortion),
+- **Step 1 — Calibration & dataset:** camera calibrated (intrinsics + undistortion),
   81-image dataset collected, undistorted, labelled (COCO), split 70/20/10.
-- ✅ **Step 2 — Model training:** Mask R-CNN trained (test mAP@0.5 = 1.0, IoU = 0.972);
+- **Step 2 — Model training:** Mask R-CNN trained (test mAP@0.5 = 1.0, IoU = 0.972);
   inference pipeline (`inference/infer.py`) undistorts → segments → annotates.
-- 🚧 **Step 3 — Pixel-to-mm measurement:** in progress.
+- **Step 3 — Pixel-to-mm measurement:** card-referenced measurement with depth
+  correction; validated on 12 images → **MAE 1.53 mm, MPE 2.15%**.
 
-See commit history for incremental progress.
+All three steps complete. See commit history for incremental progress.
