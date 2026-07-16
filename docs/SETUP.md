@@ -53,8 +53,6 @@ python calibration/scripts/undistort_quality.py --input calibration/images --out
 
 ### 4.2 Dataset preparation (Step 1)
 ```bash
-# iPhone HEIC -> JPG (if starting from raw HEIC captures)
-python calibration/scripts/convert_heic.py --input dataset/raw --delete
 # undistort dataset images with Step 1 intrinsics
 python dataset/scripts/undistort_images.py --input dataset/raw --output dataset/undistorted
 ```
@@ -76,7 +74,10 @@ Undistorts → segments → writes an annotated image to `inference/outputs/`.
 See `inference/README.md`.
 
 ### 4.5 Measurement (Step 3)
-_Documented in `measurement/README.md` and `docs/MEASUREMENT_REPORT.md` (in progress)._
-
-## 5. Docker (optional)
-Not used for this project; the venv setup above is the supported path.
+```bash
+python measurement/measure.py --image measurement/images \
+    --card-w 89 --card-h 50 --gt-w 113 --gt-h 50 --box-thickness 22
+```
+Undistorts → detects the card (scale) → segments the box → outputs width/height in
+mm + confidence per image, and (with `--gt-*`) reports MAE/MPE against ruler ground
+truth. For a single new image, drop the `--gt-*` args. See `measurement/README.md`.
