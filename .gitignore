@@ -7,9 +7,6 @@ calibration/**/*.png
 # Corner-detection cache (regenerable temp artifact, can be large)
 calibration/_corners_cache*.npz
 
-# Keep the small undistortion sample (documentation asset for the report)
-!calibration/undistort_sample.jpg
-
 # Dataset: raw images, labels, splits (host on Google Drive)
 dataset/raw/
 dataset/undistorted/
@@ -38,7 +35,7 @@ models/test_predictions/
 inference/outputs/
 measurement/outputs/
 
-# Measurement input photos (box + card) — host on Google Drive
+# Measurement input photos (box + card) - host on Google Drive
 measurement/images/
 
 # Standard Python
@@ -61,5 +58,4 @@ Thumbs.db
 
 *.pdf
 
-!**/README.md
 !**/.gitkeep
