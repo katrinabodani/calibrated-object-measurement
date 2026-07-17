@@ -3,12 +3,12 @@
 End-to-end segmentation inference: **input image → undistort → Mask R-CNN → annotated output**.
 
 ## Contents
-- `infer.py` — inference script (undistortion + segmentation + annotation)
-- `outputs/` — annotated predictions (**NOT in git** — regenerated locally)
+- `infer.py` - inference script (undistortion + segmentation + annotation)
+- `outputs/` - annotated predictions (**NOT in git** — regenerated locally)
 
 ## Prerequisites
 - Trained weights at `models/weights/maskrcnn_medicinebox_best.pth`
-  (download from Drive — see `models/README.md`).
+  (download from Drive - see `models/README.md`).
 - Camera intrinsics at `calibration/camera_intrinsics.npz` (from Step 1).
 
 ## Usage

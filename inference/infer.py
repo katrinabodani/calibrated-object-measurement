@@ -1,5 +1,5 @@
 """
-infer.py — End-to-end segmentation inference.
+infer.py : End-to-end segmentation inference.
 
 Takes an image captured with the calibrated camera, undistorts it with the Step 1
 intrinsics, runs the trained Mask R-CNN, and writes an annotated output showing
@@ -26,7 +26,6 @@ from torchvision.models.detection.mask_rcnn import MaskRCNNPredictor
 
 
 def build_model(num_classes, min_size, max_size):
-    # weights=None: we load our own fine-tuned checkpoint (no downloads).
     model = maskrcnn_resnet50_fpn(weights=None, weights_backbone=None,
                                   min_size=min_size, max_size=max_size)
     in_feat = model.roi_heads.box_predictor.cls_score.in_features
