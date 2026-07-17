@@ -1,6 +1,7 @@
 """
-undistort_quality.py — Directly measure how well the calibration undistorts, by
+undistort_quality.py - Directly measure how well the calibration undistorts, by
 checking that checkerboard rows/columns become STRAIGHT lines after undistortion.
+Sole purpose: check if we have got the right calibration, and if the undistortion is working as expected.
 
 A physically straight line (a checkerboard row/column) projects to a straight
 line under an ideal pinhole camera. Any residual curvature after undistortion is

@@ -1,10 +1,9 @@
 """
-check_checkerboard.py — Validate checkerboard calibration images BEFORE calibrating.
+check_checkerboard.py - Validate checkerboard calibration images BEFORE calibrating.
+Sole purpose: To verify the images of checkerboard.
 
 For each image in --input, tries to detect the inner-corner grid. Reports PASS/FAIL
-and writes a visual overlay (detected corners drawn) to --debug so you can eyeball
-coverage and detection quality. Run this on your first batch before shooting more.
-
+and writes a visual overlay (detected corners drawn).
 Board: 9x12 squares @ 20mm  ->  INNER corners = 8 x 11.
 
 Usage:
@@ -22,7 +21,7 @@ import numpy as np
 
 
 def find_corners(gray, pattern_size):
-    """Try fast detector, then the robust SB detector as fallback."""
+    "Try fast detector, then the robust SB detector as fallback."
     flags = cv2.CALIB_CB_ADAPTIVE_THRESH | cv2.CALIB_CB_NORMALIZE_IMAGE
     ok, corners = cv2.findChessboardCorners(gray, pattern_size, flags)
     if ok:

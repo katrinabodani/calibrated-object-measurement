@@ -1,5 +1,5 @@
 """
-calibrate.py — Intrinsic camera calibration from checkerboard images (OpenCV).
+calibrate.py - Intrinsic camera calibration from checkerboard images (OpenCV).
 
 Detects the inner-corner grid in every calibration image, runs
 cv2.calibrateCamera to estimate the intrinsic matrix K and distortion
