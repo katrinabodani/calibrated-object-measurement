@@ -19,7 +19,7 @@ python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-**PyTorch with CUDA** — install the build matching your GPU (the generic
+**PyTorch with CUDA** : install the build matching your GPU (the generic
 `torch` on PyPI may be CPU-only). For CUDA 12.4:
 ```bash
 pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124

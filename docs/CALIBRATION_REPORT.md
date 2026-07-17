@@ -19,9 +19,9 @@ pinhole model with a 5-term radial–tangential distortion model
 | Distortion model | 5-term radial + tangential |
 
 **Pipeline scripts** (`calibration/scripts/`):
-- `check_checkerboard.py` — per-image corner-detection validation + overlays
-- `calibrate.py` — corner detection, calibration, error report, artifact export
-- `undistort_quality.py` — direct undistortion-quality check (line-straightness)
+- `check_checkerboard.py` : per-image corner-detection validation + overlays
+- `calibrate.py` : corner detection, calibration, error report, artifact export
+- `undistort_quality.py` : direct undistortion-quality check (line-straightness)
 
 Run:
 ```bash
@@ -81,9 +81,9 @@ distortion. Measured over 12 images (`undistort_quality.py`):
 | **After undistortion** | **0.86 px** | 1.61 px |
 
 **Two key results:**
-1. **Undistortion works** — lines become 45 % straighter, to **≈0.86 px**
-   residual (≈0.04 % over a ~2000 px object — negligible for measurement).
-2. **The raw images had only ~1.57 px of distortion to begin with** — the
+1. **Undistortion works** : lines become 45 % straighter, to **≈0.86 px**
+   residual (≈0.04 % over a ~2000 px object - negligible for measurement).
+2. **The raw images had only ~1.57 px of distortion to begin with** : the
    smartphone already corrects most lens distortion in-camera. This means the
    2.35 px reprojection error (Section 3) was dominated by **corner-localisation
    noise, not real geometric distortion.** The actual geometry after undistortion
@@ -100,7 +100,7 @@ and six controlled experiments were run to isolate the cause. Summary:
 ### Capture sessions
 | # | Setup | Res | Imgs | Error |
 |---|-------|-----|------|-------|
-| 1 | Board loose on wall/floor | 24 MP | 30 | 2.33 px |
+| 1 | Board loose on wall/floor | 24 MP | 30 | 2.37 px |
 | 2 | Flat-mounted, plastic-wrapped | 24 MP | 49 | 3.99 px |
 | 3 | Sharp/bright, flat-mounted | 24 MP | 20 | 3.83 px |
 | 4 | **12 MP native, sharp, landscape** | 12 MP | 26 | **2.35 px** |
@@ -121,11 +121,11 @@ and six controlled experiments were run to isolate the cause. Summary:
    beyond the trivial resolution scaling (2.35 px vs the 2.03 px predicted by
    pure downscaling). The corners are sharp; the model still doesn't fit.
 2. **Distortion is non-parametric.** `k2 = −0.95`, `k3 = +1.04` are large,
-   opposing higher-order terms — the optimiser straining to fit a distortion
+   opposing higher-order terms, the optimiser straining to fit a distortion
    that is not a clean radial polynomial. Richer models don't help.
 3. **Target imperfection is significant.** Releasing the object points
    (`calibrateCameraRO`) halved the error, but required implausible grid
-   deviations (mean 3.6–7.5 mm) — i.e. it is absorbing **residual non-flatness
+   deviations (mean 3.6–7.5 mm), i.e. it is absorbing **residual non-flatness
    (Z-ripple)**, not real print error (ruler-verified squares are ~20 mm).
 
 ### Root cause
@@ -140,8 +140,7 @@ sources:
 
 Reaching < 0.5 px would require a camera without computational geometry
 processing (e.g. a USB/industrial webcam) and/or a perfectly flat, machine-crisp
-target (e.g. a screen-displayed board). This was a deliberate,
-documented trade-off against project time — see `Assumptions & Limitations`.
+target. This was a documented trade-off against project time, see `Assumptions & Limitations`.
 
 ## 6. Impact on Measurement
 
@@ -157,7 +156,7 @@ Measured end-to-end accuracy (MAE / MPE) is reported in
 `docs/MEASUREMENT_REPORT.md`.
 
 ## 7. Why undistortion is mandatory before measurement
-Raw (distorted) images bend straight physical edges — most strongly near the
+Raw (distorted) images bend straight physical edges, most strongly near the
 frame periphery, where radial distortion is largest. Measuring pixel dimensions
 on a distorted image therefore yields position-dependent errors (an object of
 the same size measures differently at the centre vs the edge). Undistorting with

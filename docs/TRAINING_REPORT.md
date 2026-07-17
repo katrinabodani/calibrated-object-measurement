@@ -12,10 +12,10 @@
 ### Selection rationale
 | Reason | Detail |
 |--------|--------|
-| Metric fit | The assessment requires **mAP@0.5 / mAP@0.5:0.95** — native instance-segmentation metrics that Mask R-CNN produces directly via pycocotools. |
+| Metric fit | The assessment requires **mAP@0.5 / mAP@0.5:0.95** - native instance-segmentation metrics that Mask R-CNN produces directly via pycocotools. |
 | Step 3 needs a **confidence score** | Mask R-CNN outputs a per-instance confidence natively (required for the end-to-end demo output). |
 | Small dataset (81 imgs) | COCO-pretraining + transfer learning fine-tunes well on few images. |
-| Label compatibility | Trains directly on the COCO RLE masks — no format conversion. |
+| Label compatibility | Trains directly on the COCO RLE masks - no format conversion. |
 | Practicality | torchvision implementation installs cleanly on Windows (avoids Detectron2 build issues) and runs on the 6 GB RTX 4050. |
 
 ## 2. Training Configuration
@@ -39,7 +39,7 @@ on this single-object task, so it cannot discriminate between epochs).
 
 ## 3. Dataset
 
-70/20/10 split — 57 train / 16 val / 8 test — single class `medicine_box`,
+70/20/10 split - 57 train / 16 val / 8 test - single class `medicine_box`,
 one instance per image. See `docs/DATASET_CARD.md`. All images undistorted with
 the Step 1 intrinsics before training.
 
@@ -67,17 +67,17 @@ Full numbers in `models/metrics.json`.
 
 ## 5. Loss Curves
 
-`models/loss_curves.png` — train and validation loss both drop sharply in the
+`models/loss_curves.png` : train and validation loss both drop sharply in the
 first ~2 epochs (0.58/0.69 → ~0.11), then converge smoothly to ~0.06–0.07 and
 plateau. Train and val track together (**no overfitting**); val mAP@0.5 reaches
 1.0 by epoch 2.
 
 ## 6. Predictions on the Held-Out Test Set
 
-`models/test_predictions/pred_1.jpg … pred_8.jpg` — each shows the predicted
+`models/test_predictions/pred_1.jpg … pred_8.jpg` - each shows the predicted
 **filled mask** (translucent green) + contour + bounding box + confidence score.
 **Everything drawn here is the model's prediction** on held-out test images it
-never saw during training — the green mask, the red bounding box, and the
+never saw during training, the green mask, the red bounding box, and the
 confidence score are all model output; **no ground truth is drawn** in these
 figures. Masks are tight to the box edges across varied poses and backgrounds;
 confidence ≈ 1.0 on all test images.
@@ -94,7 +94,7 @@ Fixed seed (42). Config-driven. Best weights hosted on Drive (see `models/README
 
 - **Small test set (8 images).** The perfect mAP/precision/recall/F1 are
   encouraging but coarse at this size; **mean IoU (0.972)** is the more
-  informative quality signal. The task is intrinsically easy — a single, large,
+  informative quality signal. The task is intrinsically easy - a single, large,
   visually distinct object per image.
 - **Single instance / single class.** The pipeline is not stress-tested on
   multiple boxes per image or occlusion.
