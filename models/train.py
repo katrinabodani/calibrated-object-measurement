@@ -1,5 +1,5 @@
 """
-train.py — Fine-tune Mask R-CNN (torchvision, ResNet50-FPN, COCO-pretrained) on
+train.py : Fine-tune Mask R-CNN (torchvision, ResNet50-FPN, COCO-pretrained) on
 the medicine-box dataset.
 
 Config-driven (models/configs/maskrcnn.yaml). Logs train/val loss and val mAP per
@@ -147,7 +147,7 @@ def main():
             torch.save(model.state_dict(), best_path)
             print(f"    saved best (val_loss={vl:.4f}, epoch {epoch}) -> {best_path}")
 
-    # ---- Loss curves ----
+    # Loss curves 
     plt.figure(figsize=(8, 5))
     ep = range(1, len(history["train_loss"]) + 1)
     plt.plot(ep, history["train_loss"], label="train loss")
@@ -159,7 +159,7 @@ def main():
     plt.savefig(os.path.join(out_dir, "loss_curves.png"), dpi=120)
     print(f"Saved loss curves -> {out_dir}/loss_curves.png")
 
-    # ---- Final test evaluation with best weights ----
+    # Final test evaluation with best weights
     model.load_state_dict(torch.load(best_path, map_location=device))
     test_metrics, _ = evaluate(model, test_loader, device, test_gt, fg,
                                ev["score_thresh_prf"], ev["iou_thresh_prf"])

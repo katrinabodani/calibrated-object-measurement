@@ -1,5 +1,5 @@
 """
-engine.py — training epoch, validation loss, and evaluation (COCO mAP + IoU/P/R/F1).
+engine.py : training epoch, validation loss, and evaluation (COCO mAP + IoU/P/R/F1).
 
 Evaluation reports:
   - mAP@0.5 and mAP@0.5:0.95 for both segm and bbox (pycocotools COCOeval),

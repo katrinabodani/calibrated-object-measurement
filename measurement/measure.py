@@ -1,5 +1,5 @@
 """
-measure.py — Pixel-to-mm measurement of the box using a card reference.
+measure.py : Pixel-to-mm measurement of the box using a card reference.
 
 Pipeline (per image):
   1. Undistort with the Step 1 intrinsics.
@@ -31,8 +31,6 @@ from torchvision.models.detection import maskrcnn_resnet50_fpn
 from torchvision.models.detection.faster_rcnn import FastRCNNPredictor
 from torchvision.models.detection.mask_rcnn import MaskRCNNPredictor
 
-
-# ----------------------------- model -----------------------------
 def build_model(num_classes, min_size, max_size):
     model = maskrcnn_resnet50_fpn(weights=None, weights_backbone=None,
                                   min_size=min_size, max_size=max_size)
@@ -42,8 +40,6 @@ def build_model(num_classes, min_size, max_size):
     model.roi_heads.mask_predictor = MaskRCNNPredictor(in_feat_mask, 256, num_classes)
     return model
 
-
-# --------------------------- card detection ---------------------------
 def order_corners(pts):
     pts = np.asarray(pts, np.float32).reshape(4, 2)
     s = pts.sum(1)
@@ -51,7 +47,7 @@ def order_corners(pts):
     return np.array([pts[np.argmin(s)], pts[np.argmin(d)],
                      pts[np.argmax(s)], pts[np.argmax(d)]], np.float32)  # TL,TR,BR,BL
 
-
+# card detection
 def detect_card(img_bgr, card_ratio, exclude_mask=None,
                 min_area_frac=0.006, max_area_frac=0.5, ratio_tol=0.45, fill_min=0.80):
     """Find the card as a solid rectangle of the right aspect ratio.
@@ -105,7 +101,7 @@ def pixels_per_mm(corners, card_w, card_h):
     return (long_px / long_mm + short_px / short_mm) / 2
 
 
-# --------------------------- measurement ---------------------------
+# measurement
 def measure_box(mask):
     """Min-area rectangle of the mask -> (long_px, short_px, box_points)."""
     cnts, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
@@ -178,8 +174,8 @@ def annotate(und, res):
             p = m + d * 70                      # push the label outside the box edge
             label((int(p[0] - 130), int(p[1])), text)
 
-        place_on_edge(li, f"W: {res['long_mm']:.1f} mm")   # width along the long edge
-        place_on_edge(si, f"H: {res['short_mm']:.1f} mm")  # height along the short edge
+        place_on_edge(li, f"W: {res['long_mm']:.1f} mm")   # width 
+        place_on_edge(si, f"H: {res['short_mm']:.1f} mm")  # height
         c = bp.min(0).astype(int)
         label((c[0], c[1] - 20), f"conf {res['score']:.2f}", scale=1.2)
     else:

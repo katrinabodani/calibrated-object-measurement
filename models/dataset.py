@@ -1,5 +1,5 @@
 """
-dataset.py — COCO instance-segmentation dataset for the medicine-box splits.
+dataset.py : COCO instance-segmentation dataset for the medicine-box splits.
 
 Reads a Roboflow COCO export split (images + _annotations.coco.json with RLE
 masks) and yields (image_tensor, target) in the format torchvision detection

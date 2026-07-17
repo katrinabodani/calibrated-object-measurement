@@ -3,7 +3,7 @@
 
 model:
   arch: maskrcnn_resnet50_fpn
-  pretrained: true          # COCO-pretrained (transfer learning — essential for 81 imgs)
+  pretrained: true          # COCO-pretrained (transfer learning - essential for 81 imgs)
   num_classes: 2            # background + medicine_box
   min_size: 640             # resize short side (tuned for 6 GB VRAM)
   max_size: 1024            # resize long side
@@ -15,7 +15,7 @@ data:
   test: test
 
 train:
-  epochs: 25               # converges by ~epoch 3 (COCO-pretrained); enough for a clean curve + LR step
+  epochs: 25               # (COCO-pretrained); enough for a clean curve + LR step
   batch_size: 2
   workers: 2
   optimizer: sgd            # sgd | adamw

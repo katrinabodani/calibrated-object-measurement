@@ -3,10 +3,10 @@
 Pixel-to-mm measurement pipeline and accuracy validation.
 
 ## Contents
-- `measure.py` — undistort → detect card (scale) → segment box → measure → depth-corrected mm
-- `accuracy_report.csv` — per-image results + MAE/MPE (tracked in git)
-- `images/` — measurement photos, box + card (**NOT in git** — hosted on Drive)
-- `outputs/` — annotated results (**NOT in git** — hosted on Drive)
+- `measure.py` : undistort → detect card (scale) → segment box → measure → depth-corrected mm
+- `accuracy_report.csv` : per-image results + MAE/MPE (tracked in git)
+- `images/` : measurement photos, box + card (**NOT in git** — hosted on Drive)
+- `outputs/` : annotated results (**NOT in git** — hosted on Drive)
 
 See `docs/MEASUREMENT_REPORT.md` for methodology, the depth correction, and analysis.
 
