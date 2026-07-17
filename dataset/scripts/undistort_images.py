@@ -1,5 +1,5 @@
 """
-undistort_images.py — Undistort dataset images with the Step 1 intrinsics.
+undistort_images.py - Undistort dataset images with the Step 1 intrinsics.
 
 The measurement/inference pipeline undistorts every input, so the model must be
 trained on undistorted images too. This script undistorts each raw image with the

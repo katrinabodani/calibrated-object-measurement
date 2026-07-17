@@ -1,6 +1,6 @@
 """
-make_label_previews.py — Render a COCO split's masks onto its images so the
-labelling quality is viewable at a glance (no JSON tooling needed).
+make_label_previews.py - Render a COCO split's masks onto its images so the
+labelling quality is viewable at a glance (no JSON tooling needed) -- just to visibly see the labels.
 
 For each image in the chosen split, decodes the RLE mask and draws a translucent
 fill + contour, then saves a resized preview. Intended for a small sample upload
