@@ -1,19 +1,19 @@
-# XIS Technical Assessment — Calibrated Object Measurement Pipeline
+# XIS Technical Assessment : Calibrated Object Measurement Pipeline
 
 An end-to-end computer-vision pipeline that segments a custom object, removes lens
 distortion via intrinsic camera calibration, and computes the object's real-world
 **width and height in millimetres** from calibrated pixel data.
 
-> XIS AI / Computer Vision Department — Technical Hiring Assessment.
+> XIS AI / Computer Vision Department, Technical Hiring Assessment.
 
 ---
 
 ## What this system does
 
-1. **Camera calibration** — intrinsic calibration from checkerboard images (OpenCV) to remove radial & tangential lens distortion.
-2. **Dataset** — a self-collected, self-labelled image dataset of the target object.
-3. **Segmentation model** — a trained deep-learning segmentation model (not YOLO / not Roboflow).
-4. **Measurement** — pixel→mm conversion using a known-size reference object, validated against physical ruler/calliper measurements.
+1. **Camera calibration** : intrinsic calibration from checkerboard images (OpenCV) to remove radial & tangential lens distortion.
+2. **Dataset** : a self-collected, self-labelled image dataset of the target object.
+3. **Segmentation model** : a trained deep-learning segmentation model (not YOLO / not Roboflow).
+4. **Measurement** : pixel→mm conversion using a known-size reference object, validated against physical ruler/calliper measurements.
 
 ## Repository structure
 
@@ -40,14 +40,14 @@ project-root/
 | [docs/TRAINING_REPORT.md](docs/TRAINING_REPORT.md) | Architecture, hyperparameters, metrics, loss curves |
 | [docs/MEASUREMENT_REPORT.md](docs/MEASUREMENT_REPORT.md) | Methodology, accuracy table, error analysis |
 
-## Large files — Google Drive (Section 2.2)
+## Large files : Google Drive (Section 2.2)
 
 Per the assessment rules, large files are **not** committed to GitHub. They are hosted
 on Google Drive with "Anyone with the link can view" access:
 
 | Contents | Link |
 |----------|------|
-| Calibration Images (26) | https://drive.google.com/drive/folders/1LQ4apP_msEcUxKVfd0TrxYbZwzsqiJ8q?usp=drive_link |
+| Calibration Images (26) | https://drive.google.com/drive/folders/1LQ4apP_msEcUxKVfd0TrxYbZwzsqiJ8q?usp=sharing |
 | Dataset — Raw Images (81) | https://drive.google.com/drive/folders/1xIZfy29QP5V6S062ttYWHtwFYX65tbnY?usp=sharing |
 | Dataset — Undistorted Images (81) | https://drive.google.com/drive/folders/1A5up4ismFSmDij8h1h8rnFilsmp6yAFC?usp=sharing |
 | Labelled Dataset (COCO, 70/20/10 splits) | https://drive.google.com/drive/folders/1Df8IbTGVSz5snYy91Ljvjl3dpJk55sYc?usp=sharing |
@@ -71,11 +71,11 @@ pip install -r requirements.txt
 
 ## Status
 
-- **Step 1 — Calibration & dataset:** camera calibrated (intrinsics + undistortion),
+- **Step 1 : Calibration & dataset:** camera calibrated (intrinsics + undistortion),
   81-image dataset collected, undistorted, labelled (COCO), split 70/20/10.
-- **Step 2 — Model training:** Mask R-CNN trained (test mAP@0.5 = 1.0, IoU = 0.972);
+- **Step 2 : Model training:** Mask R-CNN trained (test mAP@0.5 = 1.0, IoU = 0.972);
   inference pipeline (`inference/infer.py`) undistorts → segments → annotates.
-- **Step 3 — Pixel-to-mm measurement:** card-referenced measurement with depth
+- **Step 3 : Pixel-to-mm measurement:** card-referenced measurement with depth
   correction; validated on 12 images → **MAE 1.53 mm, MPE 2.15%**.
 
-All three steps complete. See commit history for incremental progress.
+All three steps are completed. See commit history for incremental progress.

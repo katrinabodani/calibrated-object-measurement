@@ -6,9 +6,9 @@ scipy>=1.10.0
 # Imaging / plotting
 matplotlib>=3.7.0
 Pillow>=10.0.0
-pillow-heif>=0.15.0   # iPhone HEIC -> JPG conversion (convert_heic.py)
+pillow-heif>=0.15.0  
 
-# Model training — Mask R-CNN (torchvision, ResNet50-FPN, COCO-pretrained).
+# Model training: Mask R-CNN (torchvision, ResNet50-FPN).
 # Install torch/torchvision with the CUDA build matching your GPU, e.g.:
 #   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
 torch>=2.6.0
